@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="practicehome.css">
+</head>
+<body>
+    <div class="icon">
+        <img src="/Pictures/final.png" width="130px" />
+    </div>
+    <div class="home" id="home">
+    </div>
+    <script>
+         var fast_go = (s) => {
+            sessionStorage.setItem("id",data[s].id);
+            sessionStorage.setItem("name",data[s].name);
+            sessionStorage.setItem("keys",data[s].keys)
+            sessionStorage.setItem("duration",data[s].duration)
+            sessionStorage.setItem("level","1")
+            sessionStorage.setItem("tips",data[s].tips)
+            location.replace('./practice1.html');
+        };
+    </script>
+    <script type="module">
+        import data from './ch_data.json' with { type: 'json' };
+        window.data = data
+       
+        function basics(){
+            let chapterId = document.createElement("div");
+                let chapterName = document.createElement("div");
+                let chapterKeys = document.createElement("div");
+                let chapterDuration = document.createElement("div");
+                let chapterCheck = document.createElement("button");
+                chapterId.innerHTML = " <span style='font-weight:bolder;'>&#9872;</span>  ";
+                chapterName.textContent = " Learn Basics ";
+                chapterKeys.textContent = "Learn basics before start ";
+                chapterDuration.innerHTML = " Take your time <span style='font-size:20px'>&#9786;</span> ";
+                chapterCheck.innerHTML = "Check in";
+                let block = document.createElement("div");
+                chapterId.classList.add("head-of_c");
+                chapterName.classList.add("name-of_c");
+                chapterCheck.classList.add("go-to_c");
+                chapterCheck.setAttribute("onclick", `location.replace("./basicChap.html")`);
+                block.appendChild(chapterId);
+                block.appendChild(chapterName);
+                block.appendChild(chapterKeys);
+                block.appendChild(chapterDuration);
+                block.appendChild(chapterCheck);
+                block.className = "chapter";
+                home.appendChild(block);
+
+        }
+        basics();
+        document.addEventListener('DOMContentLoaded', function() {
+            let home = document.getElementById("home");
+            for (let i = 0; i < data.length; i++) {
+                let chapterId = document.createElement("div");
+                let chapterName = document.createElement("div");
+                let chapterKeys = document.createElement("div");
+                let chapterDuration = document.createElement("div");
+                let chapterCheck = document.createElement("button");
+                chapterId.textContent = data[i].id;
+                chapterName.textContent = data[i].name;
+                chapterKeys.textContent = "keys : " + data[i].keys;
+                chapterDuration.textContent = "Duration : " + data[i].duration;
+                chapterCheck.innerHTML = "Check in";
+                let block = document.createElement("div");
+                chapterId.classList.add("head-of_c");
+                chapterName.classList.add("name-of_c");
+                chapterCheck.classList.add("go-to_c");
+                chapterCheck.setAttribute("onclick", `fast_go(${i})`);
+                block.appendChild(chapterId);
+                block.appendChild(chapterName);
+                block.appendChild(chapterKeys);
+                block.appendChild(chapterDuration);
+                block.appendChild(chapterCheck);
+                block.className = "chapter";
+                home.appendChild(block);
+            }
+        });
+    </script>
+</body>
+</html>

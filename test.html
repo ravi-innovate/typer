@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="test.css">
+</head>
+    <body>
+        <div class="icon">
+            <img src="./Pictures/final.png" width="130px" />
+        </div>
+        <div id="workbook">
+            <div id="service">
+                <div><h2> Mode </h2> <button id="easy"> Easy </button>  <button id="medium"> Medium </button> <button id="harder"> Harder </button>  </div>
+                <div><h2> Type </h2> <button id="text"> Text </button>  <button id="Alphanumeric"> Alphanumeric </button>  <button id="numeric"> Numeric </button> </div>
+                <div><h2> Live Performance </h2>
+                     <h4> <font color="green"><b>&#x2609;</b></font> Time Left : <font id="countdown"> 00 </font> </h4> 
+                     <h4> <font color="green"><b>&#x2609;</b></font> Speed : <font id="Lspeed"> 00 </font> CPS </h4> 
+                     <h4> <font color="green"><b>&#x2609;</b></font> Accuracy : <font id="Laccu">00</font>% </h4>  </div>
+            </div>
+            <div id="main">
+                <!-- <input id="after_main" /> -->
+                <div id="before"> </div>
+                <div id="after"> </div>
+                <!-- <div id="preventer"></div> -->
+            </div>
+            <div id="perform">
+                ads x
+                <!-- <div id="speed">
+                    <div id="meterV">
+                        <img style="position:absolute;"src="https://i.imgur.com/39whS.png" height="200px" width="200px" alt="">
+                        <img id="sui" style="position:absolute;transition:All 0.7s;margin:1px;rotate:-140deg;" src="https://blog.pritishvaidya.dev/static/9972ce6990a75f6c77a4d5e2203f2890/43142/speedometer_1.png" height="180px" width="180px" alt="">
+                    </div>
+                    <div id="spValue"> 000 </div>
+                </div>
+                <progress id="accu" value="0" max="100"></progress> -->
+            </div>
+        </div>
+    </body>   
+</html>
+<script src="./graph.js"></script>
+<script>
+    const mode=sessionStorage.getItem('mode');
+    const filePath = mode +'.txt';
+    const dur = sessionStorage.getItem('duration');
+    document.getElementById(mode).style.color="rgb(190, 20, 20)";
+    document.getElementById(mode).style.fontWeight="lighter";
+    document.getElementById(mode).style.borderBottom="1px solid darkred";
+        let now = 1000;
+        // let now = dur*60000;
+    
+    fetch(filePath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to fetch file: ${response.statusText}`);
+            }
+            return response.text();
+        })
+        .then(fileContent => {
+            document.getElementById('before').innerText = fileContent;
+            k();    
+        })
+        .catch(error => {
+            console.error(error);
+            document.getElementById('before').tinnerText = 'Error reading the file.';
+            //k();
+        });
+        
+        //let input = document.getElementsByTagName('input')
+        // input.style.marginRight='-1.6rem';
+    function k(){  
+        let txt = document.getElementById('before')
+       // let sui = document.getElementById('sui')
+        let Lspeed = document.getElementById('Lspeed')
+        let write = document.getElementById('after')
+        let input = document.getElementsByTagName('input')
+        let span = document.getElementsByTagName('span')
+        let Laccu = document.getElementById('Laccu')
+        let content = txt.innerText;
+        // let test = /^[0-9 \-,;\.]+$/;
+        let records = [];
+        txt.innerHTML = '';
+        let user = '';
+        let c=0;                //character of spans
+        let k=0;                //Input box  counter
+        let ch=0;               //Input Character
+        let sr=0;               //space remover (line break)
+        let t=cor=wro=0;
+        let cps =0;
+        console.log();
+        
+        for(let i = 0 ; i<content.length;i++){
+            if(i%36===sr && content[i]===' '){
+                ++sr 
+                continue;
+            }
+            // console.log(i+' '+content[i] +' '+parseInt(i%36))
+            txt.innerHTML +=`<span>${content[i]}</span>`;
+        }
+        for(let i = 0 ; i<content.length/36;i++){
+            write.innerHTML +=`<input spellcheck="false" tabindex="-1" maxlength="36" type="text" onclick="">`;
+            
+        }
+        
+        write.addEventListener('keydown',(e)=>{
+            console.log(c)
+            if(e.key==='Backspace'){
+                if(ch==0 && k!=0)
+                    input[--k].focus() , ch=36;
+                return;
+            }
+        })
+        input[0].focus();
+        write.addEventListener('input',(e)=>{
+            // console.log(e)
+            if(c===0)
+                theEnd()
+            //if(e.inputType===undefined)
+            if(e.inputType==='deleteContentBackward'){
+                --c;
+                --ch;
+               // console.log(span[c].style.color)
+                if(span[c].style.color==='darkred')
+                    wro--,cor=c-wro;
+                span[c].style.color='rgb(90, 90, 90)';
+                // console.log('true red '+c)
+                return;
+            }
+           
+            //console.log(e)
+            //console.log(c+'  '+ch)
+            //console.log(span[c].innerText+" = "+input[k].value[ch])
+           
+            input[k].value[ch] === span[c].innerText
+                ? span[cor++,c].style.color='green'
+                : span[wro++,c].style.color='darkred';
+                // console.log(span[c].style.color)
+            ch++;
+            cps++;
+            if(c%36===35){
+                k++;
+                input[k].focus();
+                ch=0;
+            }
+            c++;
+            Laccu.innerText=parseInt(cor/c*100);
+                
+        })
+        let avg = 0;
+        let i=1;
+        let countdownInterval ;
+        function theEnd(){
+            countdownInterval = setInterval(updateCountdown, 1000);
+        }
+        function updateCountdown() {
+            avg=(cps+avg)/i++;
+                //sui.style.rotate = (cps*60/5)-140+'deg';
+                Lspeed.innerText=parseInt(cps);
+                cps=0;
+                // console.log(now)
+            if (now > 0) {
+                const minutes = Math.floor(now / (1000 * 60));
+                const seconds = Math.floor((now / 1000) % 60);
+                document.getElementById('countdown').innerHTML = ` ${minutes}m ${seconds}s`;
+                now=now-1000
+            } else {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = '00m 00s';
+                input[k].disabled=true;
+                Lspeed.innerText=parseInt(parseInt(c/5)/dur)
+                records.push([parseInt(parseInt((c-wro)/5)/dur)]);
+                show_result(records,wro,parseInt(parseInt((c)/5)/dur))
+                
+            }
+        }
+    }
+    function show_result(records,w,speed){
+        let res= document.createElement('div');
+        res.id = "main_res";
+        document.body.appendChild(res);
+        let head = '<h1 style="text-align:center"> PlateForm name </h1><h2 style="text-align:center"> Typing Test Result </h2>';
+        let bottom = `<div  id="result"><div>
+                    <font><b> Mode :</b> ${sessionStorage.getItem("mode")} </font>
+                    <font><b> Type :</b> ${sessionStorage.getItem("Type")} </font>
+            </div>
+            <div>
+                    <font><b> Duration :</b>  ${sessionStorage.getItem("duration")} </font>
+                    <font><b> Gross Speed :</b>  ${speed} wpm </font>
+            </div>
+            <div>
+                    <font><b> Net Speed :</b> ${records[records.length-1]} wpm </font>
+                    <font><b> Wrong characters :<b> ${w} </font>
+            </div></div>`;
+            document.getElementById('main_res').innerHTML = head+`<canvas id="customBarChart" width="600" height="300"></canvas>`+bottom;
+            document.getElementById('main_res').style.height = "550px";
+            document.getElementById('main_res').style.backgroundColor="rgb(10,10,10)";
+            document.getElementById('main_res').style.position="absolute";
+            make_graph(records);
+    }
+</script>           
+
+
+
+<!-- 0               34  35
+36              70  71
+72              106 107
+108 -->
+
+<!-- 1 min = 60 word = 60 wpm   (60/60) => 1
+     1 sec = 1  (5 character)  speed 60
+     1 sec = 0.5 (2.5 character) speed 30
+
+     formula for character : (no of char) * 60 / 5
+     
+-->
+
+
+    

@@ -1,0 +1,101 @@
+[
+    {
+        "id": 1,
+        "name": "middle row",
+        "keys": "asdfghjkl",
+        "duration": "5:00",
+        "tips": [
+            "Ensure proper finger placement on the home row keys (ASDF for the left hand, JKL; for the right hand).",
+            "Practice touch typing to build muscle memory and improve speed.",
+            "Maintain a relaxed hand position and straight wrists to prevent strain."
+        ]
+    },
+    {
+        "id": 2,
+        "name": "top row",
+        "keys": "qwertyuiop",
+        "duration": "5:30",
+        "tips": [
+            "Adjust your keyboard and chair height for an ergonomic typing setup.",
+            "Start with slower typing speeds to focus on accuracy before increasing speed.",
+            "Patience and persistence will lead to improvement on the top row."
+        ]
+    },
+    {
+        "id": 3,
+        "name": "bottom row",
+        "keys": "zxcvbnm",
+        "duration": "5:45",
+        "tips": [
+            "Practice finger stretching to reach the bottom row keys without strain.",
+            "Utilize your thumbs for the space bar, allowing fingers to focus on bottom row keys.",
+            "Keep fingers relaxed while typing to avoid tension and fatigue."
+        ]
+    },
+    {
+        "id": 4,
+        "name": "little finger",
+        "keys": "qazp;/",
+        "duration": "5:30",
+        "tips": [
+            "Keep your little finger relaxed and close to the keys.",
+            "Use proper hand positioning to reach the keys comfortably.",
+            "Practice typing slowly at first, then gradually increase your speed."
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Ring Finger",
+        "keys": "wsxol.",
+        "duration": "6:00",
+        "tips": [
+            "Position your fingers correctly on the home row keys.",
+            "Keep your wrists straight to avoid strain.",
+            "Practice accuracy before speed."
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Middle Finger",
+        "keys": "edcik,",
+        "duration": "5:00",
+        "tips": [
+            "Maintain a light touch on the keys to prevent fatigue.",
+            "Focus on using the correct finger for each key.",
+            "Take regular breaks to stretch your fingers and wrists."
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Index Finger",
+        "keys": "rfvtgbyhnujm",
+        "duration": "6:00",
+        "tips": [
+            "Practice proper finger placement to improve accuracy.",
+            "Use a typing tutor program to track your progress.",
+            "Stay patient and consistent with your practice."
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Number keys",
+        "keys": "0123456789",
+        "duration": "6:00",
+        "tips": [
+            "Use a typing tutor program to track your progress.",
+            "Practice proper finger placement to improve accuracy.",
+            "Stay patient and consistent with your practice."
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Symbol keys",
+        "keys": "+-=.,<>?/\\:;'!@#$$%^&*(){}[]|",
+        "duration": "8:00",
+        "tips": [
+            "If you are a programmer than you should practice these symbols carefully",
+            "Try to improve accuracy.",
+            "Stay patient and consistent with your practice."
+        ]
+    }
+]

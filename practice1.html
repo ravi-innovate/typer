@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Practice</title>
+    
+    <link rel="stylesheet" href="test.css">
+    <style>
+        body {
+            margin: 0px;
+            background-color: rgb(21, 21, 21);
+            height: 100vh;
+            margin: 0;
+        }
+
+        .handle{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .handler>h1,p{
+            color:rgb(148, 148, 148);
+            font-family: leelawadee;
+        }
+        
+        #practice-area {
+            display: grid;
+            grid-template-columns: repeat(8, 80px);
+            gap: 10px;
+            text-align: center;
+            font-size: 20px;
+            
+        }
+
+        .key {
+            width: 70px;
+            height: 70px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: outline 0.1s;
+            font-family: leelawadee;
+            color:grey;
+            outline-offset:-4px;
+            border:1px solid rgb(21, 21, 21);
+            background-color:rgba(43, 43, 43, 0.806);   
+        }
+
+        .correct {
+            outline:2px solid  green;
+            height: 70px;
+            width: 70px;
+            color: green;
+        }
+
+        .incorrect {
+            outline:2px solid  darkred;
+            color:darkred;
+        }
+        .next{
+            animation:get_focus 0.5s alternate infinite;
+        }
+        @keyframes get_focus {
+            from{
+                font-size: 20px;
+            }
+            to{
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="icon">
+        <img src="./Pictures/final.png" width="130px" />
+    </div>
+    <div id="workbook">
+        <div id="service">
+            <div><h2> Controls </h2>  <button onclick="pause()" id="c-p"> Pause </button> <button onclick="restart()" id="Restart"> Restart &#8635;</button>  </div>
+            <div><h2> Chapters </h2> <button id="l1" onclick="levelup(1)"> Level 1 </button>  <button id="l2" onclick="levelup(2)"> Level 2 </button>  <button id="l3" onclick="levelup(3)"> Level 3 </button> <br> <button style="margin:10px auto;" id="nextc"> Next Chapter &#8594; </button>
+
+             </div>
+            <div><h2> Performance </h2>
+                 <h4> <font color="green"><b>&#x2609;</b></font> Time Left : <font id="countdown">  </font> </h4> 
+                 <h4> <font color="green"><b>&#x2609;</b></font> Total characters : <font id="tc"> 00 </font> </h4> 
+                 <!-- <h4> <font color="green"><b>&#x2609;</b></font> Accuracy : <font id="Laccu">00</font>% </h4>-->  
+                </div> 
+        </div>
+        <div class="handler">
+            <h1 style="text-align: center;" id="chapterHead">  </h1>
+            <h1> Hit the keys </h1>
+            <div id="practice-area">
+            </div>
+            <h1> Tips : </h1>
+            <div id="tips-c">
+
+            </div>
+        </div>
+        <div id="perform">
+            ads x
+        </div>
+    </div>
+<script>
+    let currentIndex = 0;
+    let ch = 0;
+    let firstKey;
+    let now = sessionStorage.getItem("duration");
+    let tip_box = document.getElementById("tips-c");
+    now = now.split(":");
+    let dur_st= now[0]+"m "+now[1]+"s";
+    document.getElementById('countdown').innerText=dur_st;
+    const tc = document.getElementById('tc');
+    const c_p = document.getElementById('c-p');
+    now = (parseInt(now[0]) * 60000) + (parseInt(now[1]*1000)) - 1000;
+    const keys1 = "asdfg";
+    const keys2 = "hjkl";
+    function set_level(){
+        sessionStorage.level == 2 ?(keys1+" ",keys2+" ") :sessionStorage.level == 3 ?(keys1+keys1.toUpperCase(),keys2keys1.toUpperCase()) : (keys1,keys2) 
+    }
+    document.getElementById("chapterHead").innerHTML="<font color='red'>#"+sessionStorage.id+". "+sessionStorage.name+"</font>";
+    generate_tips();
+    function generate_tips(){
+        let tipContent = sessionStorage.getItem("tips");
+        tipContent = tipContent.split(",");
+        console.log(tipContent)
+        for(let i=0;i<tipContent.length;i++){
+            let p = document.createElement("p");
+            p.textContent = (i+1)+". "+tipContent[i];
+            tip_box.appendChild(p);
+        }
+    }
+    function generateRandomKeys() {
+        const practiceArea = document.getElementById("practice-area");
+        practiceArea.innerHTML = "";
+
+        for (let i = 0; i < 16; i++) {
+            if(i%2==0)
+                key=keys1[Math.floor(Math.random() * keys1.length)];
+            else
+               key = keys2[Math.floor(Math.random() * keys2.length)];
+            const keyElement = document.createElement("div");
+            keyElement.className = "key";
+            keyElement.innerText = key; 
+            // keyElement.id = `key-${i}`;
+            practiceArea.appendChild(keyElement);
+        }
+        currentIndex=0;
+        // Add event listener to the first key
+         firstKey = document.querySelectorAll(".key");
+    }
+    addEventListener("keydown", (e) => checkKey(e,firstKey[currentIndex].innerText, firstKey[currentIndex]));
+
+    // Initial generation of random keys
+    generateRandomKeys();
+
+    function checkKey(e,key, keyElement) {
+        console.log(key)
+        key = key==""?" " :key;
+        if(e.key==='Shift')
+            return;
+        if (key === e.key) {
+            keyElement.classList.remove("incorrect");
+            keyElement.classList.remove("next");
+            keyElement.classList.add("correct");
+            ch===0?
+                countdownInterval = setInterval(updateCountdown, 1000):"";
+            currentIndex++,ch++;
+            tc.innerHTML = ch;
+        } else {
+            keyElement.classList.add("incorrect");
+        }
+        if(currentIndex === 16 )
+        generateRandomKeys();    
+        firstKey[currentIndex].classList.add("next");
+    }
+
+    function updateCountdown() {
+            if (now > 0) {
+                const minutes = Math.floor(now / (1000 * 60));
+                const seconds = Math.floor((now / 1000) % 60);
+                document.getElementById('countdown').innerHTML = ` ${minutes}m ${seconds}s`;
+                now=now-1000
+            } else {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = '00m 00s';
+            }
+        }
+    let lock=true;
+    function pause(){
+        if(lock)
+            lock = false,c_p.innerText='Resume',clearInterval(countdownInterval)
+        else
+            lock = true, countdownInterval = setInterval(updateCountdown, 1000),c_p.innerText='Pause';
+    }
+    function restart(){
+        set_level();
+        clearInterval(countdownInterval),ch=0,now=5*60000-1000, generateRandomKeys();
+        tc.innerHTML = ch;lock=true;c_p.innerText='Pause';
+        document.getElementById('countdown').innerHTML = dur_st;
+    }
+    function levelup(level){
+        sessionStorage.level=level;
+        restart();
+    }
+</script>
+
+</body>
+</html>

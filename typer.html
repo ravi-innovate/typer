@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>typer</title>
+    <link rel="stylesheet" href="typer.css">
+</head>
+<body>
+    <div class="icon">
+        <img src="/Pictures/final.png" width="130px" />
+    </div>
+    <div class="home">
+        <div class="options"> 
+            <div>
+                <form id="test_form" onsubmit="return start_test()">
+                    <p style="margin:15px 0px;text-align: center; font-size: 24px;"> Let's test your speed ! </p>
+                    <div>
+                        <font style="width: 30%;"  size="4">Duration</font>
+                        <select name="duration" id="dur">
+                            <option value="1">1 minute</option>
+                            <option value="3">3 minute</option>
+                            <option value="5">5 minute</option>
+                            <option value="10">10 minute</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <font style="width: 30%;" size="4">Mode</font>
+                        <span>
+                            <input type="radio" value="easy" name="mode" checked>easy 
+                            <input type="radio" value="medium"  name="mode">medium 
+                            <input type="radio" value="harder"  name="mode">harder 
+                        </span>
+                    </div>
+                    
+                    <div>
+                        <font style="width: 30%;" size="4">Type</font>
+                        <span>
+                            <input type="radio" value="text"  name="type" checked>text 
+                            <input type="radio" value="Alphanumeric"  name="type">alphanumeric 
+                            <input type="radio" value="numeric"  name="type">numeric 
+                        </span>
+                    </div>
+                    <div style="display: flex;justify-content: center;"><input type="submit" value="Submit"></div>
+                    
+                </form>
+            </div>
+            <div class="home_atract">
+                <h1> <font> Boost Your Typing Speed </font></h1>
+                <p style="font-size: 18px;"> <-plateform name-> provides you a short and effective practice platform. that is absolutely free to use. There a various chapters are available for improve your typing performance. So, Go ahead and take it champ.... </p>
+                <button onclick="location.replace('./practicehome.html')" class="go_prac"> Start Practice </button>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function start_test(){
+        let form = document.getElementById("test_form");
+        sessionStorage.setItem("type",form.type.value);
+        sessionStorage.setItem("mode",form.mode.value);
+        sessionStorage.setItem("duration",form.duration.value);
+         location.replace('./test.html');
+        return false;
+    }
+</script>

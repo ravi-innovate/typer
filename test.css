@@ -1,0 +1,209 @@
+body{
+    margin: 0px;
+    background-color: rgb(21, 21, 21);
+}
+.icon{
+    padding: 30px;
+}
+#workbook{
+    display: flex;
+    justify-content: space-evenly;
+    align-items:center;
+    flex-wrap: wrap;
+}
+#workbook h2,h4{
+    font-family: leelawadee;
+    font-weight: lighter;
+}
+#workbook button{
+    cursor:pointer;
+    border-radius: 10px;
+    padding:3px 12px;
+    color:grey;
+    border:1px solid rgb(21, 21, 21);
+    background-color:rgba(43, 43, 43, 0.806);
+}
+#main,#main_res{
+    /* display: flex;
+    justify-content: center; */
+    padding: 10px;
+    width:fit-content;
+    scroll-behavior: smooth;
+    scroll-padding: 50%;
+    overflow:hidden;
+    /* z-index: 15; */
+    /* background: linear-gradient(rgb(255, 255, 255),rgb(156, 156, 247)); */
+    background:rgba(43, 43, 43, 0.806);
+    border:1px solid rgb(47, 47, 47);
+    border-radius: 20px;
+    height:430px;
+}
+#before,#after_main{
+    font-family: consolas;
+    width:600px;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+
+    /* text-align:justify; */
+    line-height: 70px;
+    color:rgb(95, 95, 95);
+    /* border:1px solid black; */
+    height:500px;       
+}
+#before{
+    padding: 1px;
+    word-break: break-all;
+    font-kerning:none;
+    /* word-wrap: break-word; */
+    /* text-overflow:wrap; */
+}
+
+#after_main{
+    height:2rem;
+    width:1.4rem;
+    outline: 0px;
+    margin-right: -1.52rem;
+    padding:10px 0px;
+    color:rgb(180, 20, 255);
+    background-color: transparent;
+    z-index: 5;
+}
+#before span{
+    
+    height:fit-content;
+    width:fit-content;
+    font-family: courier;
+    font-size: 1.5rem;
+    /* outline: 1px solid black; */
+    padding:0px;
+    border:0px;
+    margin-bottom: 0px;
+    color:rgb(90, 90, 90);
+    background-color: transparent;
+    z-index: 5;    
+}
+#after{
+    margin-top: -500px;
+    width:600px;
+    /* border:1px solid black; */
+    /* position: absolute; */
+    padding-top: 7px;
+}
+#after input{
+    height:1.6rem;
+    width: 100%;
+    border: 0px;
+    border-bottom: 1px solid rgb(46, 51, 57);
+    color:rgba(71, 169, 255, 0.579);
+    background-color: transparent;
+    outline:0px;
+    margin-top: 42px;
+    z-index: 1;
+    /* mix-blend-mode: multiply; */
+    font-family: courier;
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+    
+}
+#service{
+    width:23%;
+    height:420px;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(145, 145, 145);
+    display: block;
+}
+
+#perform{
+    height:420px;
+    width:15%;
+    color:grey;
+    border:1px solid rgb(53, 53, 53);
+    background-color: rgba(0, 0, 0, 0);
+    padding:1px;
+}
+/* #accu{
+    /* background:linear-gradient(red,orange,rgb(95, 255, 95));
+    color:red;
+    orientation:portrait;
+} */
+/* progress[value]::-webkit-progress-value {
+    background-image:-webkit-linear-gradient( #09c, #f44);
+    border-radius: 2px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+} */
+progress{
+    accent-color: blue;
+}
+#perform img{
+    opacity:0.7;
+    margin:-5px
+}
+#perform #speed #meterV{
+    height:190px;
+    width:190px;
+    box-shadow:0px 0px 24px 9px rgb(0, 24, 204) inset;
+    border-radius: 100%;
+}
+#perform #speed{
+    display: flex;
+}
+#spValue{
+    height:18px;
+    position: absolute;
+    width:45px;
+    text-align: center;
+    margin:57px 67px;
+    padding:2px 0px;
+    border-radius: 5px;
+    box-shadow:0px 0px 3px 1px rgb(23, 38, 151) inset;
+    border:1px solid rgb(61, 61, 61);
+    color:rgb(145, 145, 145);
+}
+#preventer{
+    height:600px;
+    /* width:; */
+    z-index: 5;
+    border:1px solid white;
+    position: sticky;
+}
+canvas {
+    background-color: #000000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+#result{
+    padding:10px 80px;
+}
+#result>div{
+    display: grid;
+    grid-template-columns: repeat(2, 45%);
+    gap: 10px;
+    font-size: 16px;
+}
+
+#result>div>font{
+   
+    color:rgb(148, 148, 148);
+    font-family: leelawadee;
+    margin:10px;
+}
+h1,h2{
+    color:rgb(148, 148, 148);
+    font-family: leelawadee;
+    margin: 5px;
+}
+#main_res{
+    display: grid;
+    
+}
+body>#workbook{
+    position: absolute;
+}
+/* .dot{
+    border: 1px solid red;
+    border-radius: 100%;
+    height: 1px;
+    width: 1px;
+    display: inline-block;
+} */
+

@@ -1,0 +1,79 @@
+body{
+    margin: 0px;
+    background-color: rgb(21, 21, 21);
+}
+.icon{
+    padding: 30px;
+}
+.home{
+    /* text-align: center; */
+    flex-direction: column;
+    /* display: flex; */
+    /* align-items: center; */
+}
+.options{
+    display: flex;
+    justify-content: space-around;
+}
+
+.options div{
+    /* height:10em; */
+    width:26em;
+    margin:2em;
+    
+}
+
+#test_form{
+    /* height:100%; */
+    color:rgb(148, 148, 148);
+    font-family: leelawadee;
+    border-radius: 16px;
+    background: rgb(13, 13, 13);
+    border:1px solid rgb(35, 35, 35);
+    width:fit-content;
+}
+
+#test_form>div{
+    display: flex;
+    justify-content: flex-start;
+    margin:1.7em;
+    /* margin: 10px; */
+}
+
+#test_form #dur{
+    width:150px;
+    border-radius:15px;
+    padding: 5px 5px;
+}
+Select{
+    color:rgb(107,107,107);
+    background:transparent;
+}
+option{
+    color:rgb(107,107,107);
+    background:transparent;
+}
+
+input[type="radio"]{
+    accent-color: rgb(255, 0, 0);
+}
+input[type="submit"],.go_prac{
+    border:0px;
+    padding: 6px 35px;
+    font-family: leelawadee;
+    font-size: 18px;
+    color:rgb(255, 15, 15);
+    background: rgb(0, 0, 0);
+    border-radius: 20px;
+}
+.home_atract{
+    color:rgb(148, 148, 148);
+    font-family: leelawadee;
+    font-style: oblique;
+}
+.go_prac{
+    border:1px solid rgb(255, 15, 15);
+    background: transparent;
+    font-style: oblique;
+}
+

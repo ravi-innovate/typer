@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0px;
+    height:100%;
+    width:100%;
+    background-image:url('img/photo.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 100% 100%;
+    padding: 0px;   
+    
+    font-family:lucida sans;
+}
+
+.main_page{
+    background-color: #ffffff;
+    height:85%;
+    width:80%;
+    border-radius:50px;
+    display: flex;
+   justify-content: space-around;
+   align-items: center;
+}
+.wel_img{
+    width:21rem;
+    background-image:url('img/login_f.jpg');
+    background-size: 100% 100%;
+    mix-blend-mode: multiply;   
+   
+    height:25rem;
+   
+}
+.wel_img img{
+    width:21rem;
+    height:25rem;
+    background-color: white;
+    mix-blend-mode: multiply;
+}
+.userIn{
+    width:20rem;
+    padding:20px;
+    
+    height:fit-content;
+    /* border:1px solid #8900c9; */
+    border-radius: 20px;
+    background-color: rgb(240, 240, 240);
+    box-shadow: 2px 2px 6px 1px #b922ff3c ;
+    backdrop-filter: blue(4px);
+}
+.userIn h2,p{
+    text-align: center;
+    color:#8900c9;
+    font-family: leelawadee;
+    text-shadow: 1px 1px 1px white;
+}
+.userIn input{
+    height:40px;
+    width:20rem;
+    margin-top:20px;
+    padding: 10px;
+    text-shadow: 1px 1px 1px white;
+    border-radius:25px;
+    border:0px;
+    outline: 0px;
+    background-color: transparent;
+    box-shadow: 2px 2px 5px 1px lightgrey inset, -2px -2px 5px 1px white inset ;
+    color: #2570bb;
+    border:0px;
+    font-size: 1.05rem !important;
+}
+.userIn button{
+    height:40px;
+    width:7.7rem;
+    margin-top:20px;
+    padding: 10px;
+    font-size: 16px;
+    text-shadow: 2px 2px 2px white;
+    border-radius:5px;
+    border:0px;
+    outline: 0px;
+    color:#8900c9;
+    font-weight: bold;
+    background-color: transparent;
+    box-shadow: 2px 2px 5px 1px lightgrey   , -2px -2px 5px 3px white ;
+}
+.userIn button:hover{
+    box-shadow: 2px 2px 3px 1px lightgrey, -2px -2px 5px 1px white ;
+}
+
+.userIn button:active{
+    box-shadow: 2px 2px 5px 1px lightgrey inset, -2px -2px 2px 1px white inset ;
+}
+.userIn div{
+    display: flex;
+    width: 21rem;
+    /* border:1px solid silver; */
+    justify-content: space-evenly;
+}
+.userIn pre{
+    text-align:center;
+    font-size:0.85rem;
+}
+
