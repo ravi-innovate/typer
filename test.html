@@ -20,22 +20,9 @@
                      <h4> <font color="green"><b>&#x2609;</b></font> Accuracy : <font id="Laccu">00</font>% </h4>  </div>
             </div>
             <div id="main">
-                <!-- <input id="after_main" /> -->
                 <div id="before"> </div>
                 <div id="after"> </div>
-                <!-- <div id="preventer"></div> -->
             </div>
-<!--             <div id="perform">
-                ads x
-                <!-- <div id="speed">
-                    <div id="meterV">
-                        <img style="position:absolute;"src="https://i.imgur.com/39whS.png" height="200px" width="200px" alt="">
-                        <img id="sui" style="position:absolute;transition:All 0.7s;margin:1px;rotate:-140deg;" src="https://blog.pritishvaidya.dev/static/9972ce6990a75f6c77a4d5e2203f2890/43142/speedometer_1.png" height="180px" width="180px" alt="">
-                    </div>
-                    <div id="spValue"> 000 </div>
-                </div>
-                <progress id="accu" value="0" max="100"></progress> -->
-            </div> -->
         </div>
     </body>   
 </html>
@@ -47,8 +34,8 @@
     document.getElementById(mode).style.color="rgb(190, 20, 20)";
     document.getElementById(mode).style.fontWeight="lighter";
     document.getElementById(mode).style.borderBottom="1px solid darkred";
-        let now = 1000;
-        // let now = dur*60000;
+        //let now = 1000;
+         let now = dur*60000;
     
     fetch(filePath)
         .then(response => {
@@ -171,6 +158,8 @@
                 Lspeed.innerText=parseInt(parseInt(c/5)/dur)
                 records.push([parseInt(parseInt((c-wro)/5)/dur)]);
                 show_result(records,wro,parseInt(parseInt((c)/5)/dur))
+                document.getElementById('service').style.display = "none";
+                document.getElementById('main').style.display = "none";
                 
             }
         }
@@ -178,8 +167,9 @@
     function show_result(records,w,speed){
         let res= document.createElement('div');
         res.id = "main_res";
-        document.body.appendChild(res);
-        let head = '<h1 style="text-align:center"> PlateForm name </h1><h2 style="text-align:center"> Typing Test Result </h2>';
+        let work = document.getElementById("workbook")
+        work.appendChild(res);
+        let head = '<h1 style="text-align:center"> NenoSpeed </h1><h2 style="text-align:center"> Typing Test Result </h2>';
         let bottom = `<div  id="result"><div>
                     <font><b> Mode :</b> ${sessionStorage.getItem("mode")} </font>
                     <font><b> Type :</b> ${sessionStorage.getItem("Type")} </font>
@@ -195,25 +185,10 @@
             document.getElementById('main_res').innerHTML = head+`<canvas id="customBarChart" width="600" height="300"></canvas>`+bottom;
             document.getElementById('main_res').style.height = "550px";
             document.getElementById('main_res').style.backgroundColor="rgb(10,10,10)";
-            document.getElementById('main_res').style.position="absolute";
+            // document.getElementById('main_res').style.position="absolute";
             make_graph(records);
     }
 </script>           
-
-
-
-<!-- 0               34  35
-36              70  71
-72              106 107
-108 -->
-
-<!-- 1 min = 60 word = 60 wpm   (60/60) => 1
-     1 sec = 1  (5 character)  speed 60
-     1 sec = 0.5 (2.5 character) speed 30
-
-     formula for character : (no of char) * 60 / 5
-     
--->
 
 
     
